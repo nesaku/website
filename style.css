@@ -7,27 +7,151 @@
 body {
   width: 100%;
   height: 100vh;
-  background-color: #000000;
+  background-color: #141414;
+  color: #ffffff;
+  overflow-x: hidden;
 }
 
-.wrapper {
+a {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+svg {
+  margin-bottom: 3vh;
+}
+
+h2::before,
+h2::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-content: center;
+  text-align: center;
 }
 
 .logoIMG {
   border-radius: 80%;
-  width: 300px;
-  height: 300px;
-  margin-top: 16vh;
-  margin-bottom: 80px;
+  width: 50%;
+  max-width: 300px;
+  height: 50%;
+  max-height: 300px;
+  margin-top: 10vh;
+  margin-bottom: 6vh;
+  opacity: 0;
+  animation: fade 1s ease 2.8s forwards;
 }
 
+.logoIMG:hover {
+  scale: 1.05;
+  transition: all 0.2s ease-in;
+}
+
+.hidden {
+  position: absolute;
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.heading1,
+.heading2,
+.heading3 {
+  font-size: clamp(1rem, 3vw + 1rem, 4rem);
+  position: relative;
+  font-family: "Source Code Pro", monospace;
+  position: relative;
+  opacity: 0;
+  animation: fade 2s ease 3s forwards;
+}
+
+.heading2 {
+  animation: reveal 1s forwards;
+  animation-iteration-count: 1;
+  animation-delay: 6s;
+  position: relative;
+}
+
+.heading3 {
+  animation: reveal 1s forwards;
+  animation-iteration-count: 1;
+  animation-delay: 9s;
+  position: relative;
+}
+
+.heading1::before {
+  background: #141414;
+  animation: typewriter 3s steps(24) 3s forwards;
+}
+
+.heading1::after {
+  width: 0.125em;
+  background: #ffffff;
+  animation: typewriter 3s steps(24) 3s forwards, blink 750ms steps(24) infinite;
+}
+
+.heading2::before {
+  background: #141414;
+  animation: typewriter 3s steps(24) 6s forwards;
+}
+
+.heading2::after {
+  width: 0.125em;
+  background: #ffffff;
+  animation: typewriter 3s steps(24) 6s forwards, blink 750ms steps(24) infinite;
+}
+
+.heading3::before {
+  background: #141414;
+  animation: typewriter 1s steps(8) 9s forwards;
+}
+
+.heading3::after {
+  width: 0.125em;
+  background: #ffffff;
+  animation: typewriter 1s steps(8) 9s forwards, blink 750ms steps(6) infinite;
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.gitLink {
+  font-size: 3rem;
+  font-weight: 800;
+  opacity: 0;
+  margin-top: 8vh;
+  transform: translateY(3rem);
+  animation: fade 2s ease 10s forwards;
+}
+
+.gitLink:hover {
+  font-size: 3.1rem;
+}
+
+/* Logo Animation */
 #logo {
-  animation: fill 0.5s ease forwards 3s;
+  width: 90%;
+  animation: fill 0.5s ease forwards 2.6s;
 }
 
 #logo path:nth-child(2) {
@@ -72,5 +196,24 @@ body {
   }
   to {
     fill: white;
+  }
+}
+/* Typewriter Animation */
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes fade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
