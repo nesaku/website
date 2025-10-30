@@ -54,3 +54,26 @@
     fill: white;
   }
 }
+
+/* Glow effects */
+.spotifyInfo,
+.biblioReads {
+  cursor: pointer;
+  transition: transform 0.25s ease, stroke 0.25s ease, fill 0.25s ease,
+    filter 0.25s ease;
+  will-change: transform, filter;
+}
+
+.spotifyInfo:hover {
+  transform: scale(1.08) translateY(-2px);
+  stroke: #047857;
+  fill: #047857;
+  filter: drop-shadow(0 0 6px #047857) drop-shadow(0 0 12px #065f46);
+}
+
+.biblioReads:hover {
+  transform: scale(1.08) translateY(-2px);
+  stroke: #881133;
+  fill: #881133;
+  filter: drop-shadow(0 0 6px #881133) drop-shadow(0 0 12px #5a0d22);
+}
